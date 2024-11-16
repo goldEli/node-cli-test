@@ -21,7 +21,7 @@
         },
         {
             "name": "ts-debug-test",
-            "program": "${workspaceFolder}/ts-debug-test/dist/index.js",
+            "program": "${workspaceFolder}/ts-debug-test/index.ts",
             "cwd": "${workspaceFolder}/ts-debug-test",
             "request": "launch",
             "skipFiles": [

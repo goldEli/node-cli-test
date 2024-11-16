@@ -1,6 +1,6 @@
 import { add } from "./src/calc.js";
 
-function test() {
+function test(b?: number) {
     console.log(add(1, 2));
 }
 
