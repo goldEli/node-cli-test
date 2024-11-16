@@ -31,6 +31,21 @@
             "presentation": {
                 "hidden": false,
                 "group": "",
+                "order": 11
+            }
+        },
+        {
+            "name": "source-map-support",
+            "program": "${workspaceFolder}/source-map-support/src/index.ts",
+            "cwd": "${workspaceFolder}/source-map-support",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node",
+            "presentation": {
+                "hidden": false,
+                "group": "",
                 "order": 1
             }
         }
