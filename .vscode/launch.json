@@ -15,14 +15,14 @@
             "type": "node",
             "presentation": {
                 "hidden": false,
-                "group": "node-debug",
-                "order": 1
+                "group": "",
+                "order": 10
             }
         },
         {
-            "name": "Launch Program2",
-            "program": "${workspaceFolder}/node-debug1/index.js",
-            "cwd": "${workspaceFolder}/node-debug1",
+            "name": "ts-debug-test",
+            "program": "${workspaceFolder}/ts-debug-test/dist/index.js",
+            "cwd": "${workspaceFolder}/ts-debug-test",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
@@ -30,8 +30,8 @@
             "type": "node",
             "presentation": {
                 "hidden": false,
-                "group": "node-debug1",
-                "order": 2
+                "group": "",
+                "order": 1
             }
         }
     ]
