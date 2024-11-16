@@ -5,14 +5,34 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Program",
+            "name": "Launch Program1",
             "program": "${workspaceFolder}/node-debug/index.js",
             "cwd": "${workspaceFolder}/node-debug",
             "request": "launch",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "type": "node"
+            "type": "node",
+            "presentation": {
+                "hidden": false,
+                "group": "node-debug",
+                "order": 1
+            }
+        },
+        {
+            "name": "Launch Program2",
+            "program": "${workspaceFolder}/node-debug1/index.js",
+            "cwd": "${workspaceFolder}/node-debug1",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node",
+            "presentation": {
+                "hidden": false,
+                "group": "node-debug1",
+                "order": 2
+            }
         }
     ]
 }
