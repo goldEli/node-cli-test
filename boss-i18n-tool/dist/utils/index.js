@@ -18,4 +18,9 @@ export function getFiles(dir, result = []) {
     });
     return result;
 }
+// 字符串是否包含中文
+export function isContainChinese(str) {
+    const chineseRegex = /[\u4e00-\u9fa5]/g;
+    return chineseRegex.test(str);
+}
 //# sourceMappingURL=index.js.map

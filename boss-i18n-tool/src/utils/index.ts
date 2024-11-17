@@ -20,3 +20,9 @@ export function getFiles(dir: string, result: string[] = []) {
 
     return result;
 }
+
+// 字符串是否包含中文
+export function isContainChinese(str: string) {
+    const chineseRegex = /[\u4e00-\u9fa5]/g;
+    return chineseRegex.test(str);
+}
