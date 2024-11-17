@@ -17,10 +17,11 @@
     "typescript": "^5.6.3"
   },
   "bin": {
-    "boss-i18n-tool": "./dist/cli.js"
+    "boss-i18n-tool": "dist/cli.js"
   },
   "files": [
     "dist",
+    "package.json",
     "README.md"
   ],
   "dependencies": {
