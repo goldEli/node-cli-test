@@ -79,5 +79,24 @@
                 "order": 1
             }
         },
+        {
+            "name": "boss-i18n-tool",
+            "program": "${workspaceFolder}/boss-i18n-tool/src/cli.ts",
+            "cwd": "${workspaceFolder}/boss-i18n-tool",
+            "args": [
+                "f",
+                "/Users/eli/Documents/weex/boss-web/src/main/webapp"
+            ],
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node",
+            "presentation": {
+                "hidden": false,
+                "group": "",
+                "order": 1
+            }
+        }
     ]
 }
