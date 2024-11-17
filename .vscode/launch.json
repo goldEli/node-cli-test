@@ -46,8 +46,23 @@
             "presentation": {
                 "hidden": false,
                 "group": "",
+                "order": 12
+            }
+        },
+        {
+            "name": "ast-transform-test",
+            "program": "${workspaceFolder}/ast-transform-test/src/index.ts",
+            "cwd": "${workspaceFolder}/ast-transform-test",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node",
+            "presentation": {
+                "hidden": false,
+                "group": "",
                 "order": 1
             }
-        }
+        },
     ]
 }
