@@ -61,6 +61,21 @@
             "presentation": {
                 "hidden": false,
                 "group": "",
+                "order": 13
+            }
+        },
+        {
+            "name": "nest-cli:test",
+            "program": "${workspaceFolder}/nest-cli/src/test.ts",
+            "cwd": "${workspaceFolder}/nest-cli",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node",
+            "presentation": {
+                "hidden": false,
+                "group": "",
                 "order": 1
             }
         },
