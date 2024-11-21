@@ -97,6 +97,21 @@
                 "group": "",
                 "order": 1
             }
+        },
+        {
+            "name": "update-i18n",
+            "program": "${workspaceFolder}/update-i18n/src/index.ts",
+            "cwd": "${workspaceFolder}/update-i18n",
+            "request": "launch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node",
+            "presentation": {
+                "hidden": false,
+                "group": "",
+                "order": 1
+            }
         }
     ]
 }
