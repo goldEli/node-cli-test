@@ -8,10 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "update-i18n": "./bin/update-i18n.js"
+    "update-i18n": "./dist/update-i18n.js"
   },
   "include": [
-    "bin/**/*",
+    "dist/**/*",
     "package.json"
   ],
   "keywords": [],
