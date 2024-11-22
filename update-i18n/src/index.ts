@@ -1,4 +1,4 @@
-// #!/usr/bin/env node
+#!/usr/bin/env node
 import { Command } from "commander";
 import chalk from "chalk";
 // @ts-ignore
@@ -18,7 +18,7 @@ program
   .option('-ov, --onlyValue', 'Only update values, not keys', false)
   .action(async (options) => {
     const { onlyValue = false } = options;
-    console.log(options);
+    // console.log(options);
     updateI18n({
       onlyValue
     });

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -7,7 +8,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-// #!/usr/bin/env node
 import { Command } from "commander";
 import chalk from "chalk";
 // @ts-ignore
@@ -20,7 +20,7 @@ program
     .option('-ov, --onlyValue', 'Only update values, not keys', false)
     .action((options) => __awaiter(void 0, void 0, void 0, function* () {
     const { onlyValue = false } = options;
-    console.log(options);
+    // console.log(options);
     updateI18n({
         onlyValue
     });

@@ -63,7 +63,7 @@ function checkUpdate(file, source, target) {
     const deleteKeys = Object.keys(sourceJSON).filter((key) => !targetJSON[key]);
     const updateKeys = Object.keys(sourceJSON).filter((key) => targetJSON[key] !== sourceJSON[key]);
     // print
-    console.log(chalk.blue(`${file},============================`));
+    console.log(`${file},============================`);
     console.log(chalk.green("新增: "), addKeys === null || addKeys === void 0 ? void 0 : addKeys.length);
     console.log(chalk.red("删除: "), deleteKeys === null || deleteKeys === void 0 ? void 0 : deleteKeys.length);
     console.log(chalk.yellow("修改: "), updateKeys === null || updateKeys === void 0 ? void 0 : updateKeys.length);

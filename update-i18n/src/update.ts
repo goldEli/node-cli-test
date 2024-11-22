@@ -63,7 +63,7 @@ function checkUpdate(file: string, source: string, target: string) {
   );
 
   // print
-  console.log(chalk.blue(`${file},============================`));
+  console.log(`${file},============================`);
   console.log(chalk.green("新增: "), addKeys?.length);
   console.log(chalk.red("删除: "), deleteKeys?.length);
   console.log(chalk.yellow("修改: "), updateKeys?.length);
