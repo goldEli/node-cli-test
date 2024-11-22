@@ -8,11 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "update-i18n": "./dist/update-i18n.js"
+    "update-i18n": "dist/index.js"
   },
-  "include": [
-    "dist/**/*",
-    "package.json"
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
   ],
   "keywords": [],
   "author": "",
