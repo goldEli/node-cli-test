@@ -17,8 +17,13 @@ const program = new Command();
 program.name("update-i18n").description("更新国际化").version("0.0.1");
 console.log(chalk.green(Alphabet("UPDATE I18N", 'planar')));
 program
-    .action((filePath) => __awaiter(void 0, void 0, void 0, function* () {
-    updateI18n();
+    .option('-ov, --onlyValue', 'Only update values, not keys', false)
+    .action((options) => __awaiter(void 0, void 0, void 0, function* () {
+    const { onlyValue = false } = options;
+    console.log(options);
+    updateI18n({
+        onlyValue
+    });
 }));
 program.parse();
 //# sourceMappingURL=index.js.map

@@ -79,12 +79,23 @@ function checkUpdate(file, source, target) {
         }
     });
 }
-function updateJSONFile(file, source, target) {
+function updateJSONFile(options) {
+    const { file, source, target, onlyValue = false } = options;
     // source 文件覆盖 target 文件
     const sourceJSON = getJSONByFile(file, source);
     const targetJSON = getJSONByFile(file, target);
     checkUpdate(file, source, target);
-    fs.writeFileSync(path.join(target, file), JSON.stringify(sourceJSON, null, 2));
+    let newValue = sourceJSON;
+    if (onlyValue) {
+        newValue = Object.keys(targetJSON).reduce((acc, key) => {
+            acc[key] = sourceJSON[key];
+            return acc;
+        }, {});
+    }
+    writeToFile(path.join(target, file), newValue);
+}
+function writeToFile(filePath, data) {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 function updateProject(dir) {
     //   const branch = execSync("git branch --show-current", { cwd: dir });
@@ -93,7 +104,7 @@ function updateProject(dir) {
     //   execSync(`git checkout ${branch}`, { cwd: dir });
     console.log(chalk.green(`${dir} 更新完成`));
 }
-export function updateI18n() {
+export function updateI18n(options) {
     return __awaiter(this, void 0, void 0, function* () {
         const project = yield choseProject();
         const projectInfo = ProjectList.find((item) => item.name === project);
@@ -110,11 +121,21 @@ export function updateI18n() {
         }
         if (choseFile === "all") {
             targetJSONList.forEach((file) => {
-                updateJSONFile(file, projectInfo.source, projectInfo.target);
+                updateJSONFile({
+                    file,
+                    source: projectInfo.source,
+                    target: projectInfo.target,
+                    onlyValue: options.onlyValue
+                });
             });
         }
         else if (choseFile) {
-            updateJSONFile(choseFile, projectInfo.source, projectInfo.target);
+            updateJSONFile({
+                file: choseFile,
+                source: projectInfo.source,
+                target: projectInfo.target,
+                onlyValue: options.onlyValue
+            });
         }
     });
 }

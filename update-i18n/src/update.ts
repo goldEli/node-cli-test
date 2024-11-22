@@ -85,15 +85,24 @@ function checkUpdate(file: string, source: string, target: string) {
   });
 }
 
-function updateJSONFile(file: string, source: string, target: string) {
+function updateJSONFile(options: { file: string, source: string, target: string, onlyValue?: boolean }) {
+  const { file, source, target, onlyValue=false } = options;
   // source 文件覆盖 target 文件
   const sourceJSON = getJSONByFile(file, source);
   const targetJSON = getJSONByFile(file, target);
   checkUpdate(file, source, target);
-  fs.writeFileSync(
-    path.join(target, file),
-    JSON.stringify(sourceJSON, null, 2)
-  );
+  let newValue = sourceJSON;
+  if (onlyValue) {
+    newValue = Object.keys(targetJSON).reduce((acc: any, key: string) => {
+      acc[key] = sourceJSON[key];
+      return acc;
+    }, {});
+  } 
+  writeToFile(path.join(target, file), newValue);
+}
+
+function writeToFile(filePath: string, data: any) {
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
 
 function updateProject(dir: string) {
@@ -104,7 +113,7 @@ function updateProject(dir: string) {
   console.log(chalk.green(`${dir} 更新完成`));
 }
 
-export async function updateI18n() {
+export async function updateI18n(options: { onlyValue: boolean }) {
   const project = await choseProject();
   const projectInfo = ProjectList.find((item) => item.name === project);
   if (!projectInfo) {
@@ -122,9 +131,19 @@ export async function updateI18n() {
 
   if (choseFile === "all") {
     targetJSONList.forEach((file) => {
-      updateJSONFile(file, projectInfo.source, projectInfo.target);
+      updateJSONFile({
+        file,
+        source: projectInfo.source,
+        target: projectInfo.target,
+        onlyValue: options.onlyValue
+      });
     });
   } else if (choseFile) {
-    updateJSONFile(choseFile, projectInfo.source, projectInfo.target);
+    updateJSONFile({
+      file: choseFile,
+      source: projectInfo.source,
+      target: projectInfo.target,
+      onlyValue: options.onlyValue
+    });
   }
 }

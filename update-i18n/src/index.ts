@@ -1,4 +1,3 @@
-
 // #!/usr/bin/env node
 import { Command } from "commander";
 import chalk from "chalk";
@@ -16,8 +15,13 @@ console.log(chalk.green(Alphabet("UPDATE I18N", 'planar')));
 
 
 program
-  .action(async (filePath: string) => {
-    updateI18n();
+  .option('-ov, --onlyValue', 'Only update values, not keys', false)
+  .action(async (options) => {
+    const { onlyValue = false } = options;
+    console.log(options);
+    updateI18n({
+      onlyValue
+    });
   });
 
 program.parse();
