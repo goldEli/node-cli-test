@@ -102,7 +102,7 @@ function updateJSONFile(options: { file: string, source: string, target: string,
 }
 
 function writeToFile(filePath: string, data: any) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 4));
 }
 
 function updateProject(dir: string) {

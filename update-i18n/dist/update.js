@@ -95,7 +95,7 @@ function updateJSONFile(options) {
     writeToFile(path.join(target, file), newValue);
 }
 function writeToFile(filePath, data) {
-    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 4));
 }
 function updateProject(dir) {
     //   const branch = execSync("git branch --show-current", { cwd: dir });
