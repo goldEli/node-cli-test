@@ -82,12 +82,12 @@ function handleProject(projectName) {
         const files = filterFilesWithJSON(allFiles);
         const { zh, en } = project;
         // console.log(files);
-        const sourceFiles = files.filter((file) => ![zh, en].includes(file));
-        console.log(123, sourceFiles, zh, en);
+        const sourceFiles = files.filter((file) => ![zh].includes(file));
+        const zhContent = readJSONByPath(path.join(projectPath, zh));
+        const enContent = readJSONByPath(path.join(projectPath, en));
+        // console.log(sourceFiles, zh, en);
         for (const file of sourceFiles) {
             const name = getNameByPath(file);
-            const zhContent = readJSONByPath(path.join(projectPath, zh));
-            const enContent = readJSONByPath(path.join(projectPath, en));
             const sourceContent = readJSONByPath(path.join(projectPath, file));
             const result = {};
             for (const key in zhContent) {
