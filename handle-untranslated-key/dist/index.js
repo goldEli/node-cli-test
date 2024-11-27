@@ -12,6 +12,7 @@ import inquirer from "inquirer";
 import { projectList } from "./config.js";
 import { createDirByPath, gitCheckoutMainAndPull, isEmptyObject, readAllFileByPath, readJSONByPath, writeJSONByPath } from "./utils/index.js";
 import path from "path";
+import chalk from "chalk";
 const resultPath = path.join(process.cwd(), "result");
 createDirByPath(resultPath);
 // select project
@@ -101,7 +102,7 @@ function handleProject(projectName) {
             }
             writeJSONByPath(path.join(outputDir, file), result);
         }
-        console.log(`${projectName} 处理完成`);
+        console.log(chalk.green(`${projectName} 处理完成`));
     });
 }
 function main() {
