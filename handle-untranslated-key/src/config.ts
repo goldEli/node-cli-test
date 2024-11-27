@@ -23,4 +23,10 @@ export const projectList = [
     zh: "zh-cn.json",
     en: "en.json",
   },
+  {
+    name: "affiliate-language",
+    path: "/Users/eli/Documents/weex/affiliate-language/",
+    zh: "zhCN.json",
+    en: "en.json",
+  },
 ];
