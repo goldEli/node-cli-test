@@ -56,8 +56,8 @@ function checkUpdate(file: string, source: string, target: string) {
   const targetJSON = getJSONByFile(file, target);
 
   // targetJSON 对比 sourceJSON, 有哪些key修改，哪些key新增，哪些key删除
-  const addKeys = Object.keys(targetJSON).filter((key) => !sourceJSON[key]);
-  const deleteKeys = Object.keys(sourceJSON).filter((key) => !targetJSON[key]);
+  const addKeys = Object.keys(sourceJSON).filter((key) => !targetJSON[key]);
+  const deleteKeys = Object.keys(targetJSON).filter((key) => !sourceJSON[key]);
   const updateKeys = Object.keys(sourceJSON).filter(
     (key) => targetJSON[key] !== sourceJSON[key]
   );
@@ -71,18 +71,18 @@ function checkUpdate(file: string, source: string, target: string) {
   const deleteKeysCompareWithZhCN = Object.keys(zhCN).filter(
     (key) => !targetJSON[key]
   );
-  setTimeout(() => {
-    if (deleteKeysCompareWithZhCN.length > 0) {
-      console.log(chalk.red(`===========================`));
-      console.log(
-        chalk.red(`${file},更新文档key少于zh-cn.json`),
-        deleteKeysCompareWithZhCN?.length
-      );
-      console.log(chalk.red(`===========================`));
-    } else {
-      console.log(chalk.green(`${file},更新完成`));
-    }
-  });
+  // setTimeout(() => {
+  //   if (deleteKeysCompareWithZhCN.length > 0) {
+  //     console.log(chalk.red(`===========================`));
+  //     console.log(
+  //       chalk.red(`${file},更新文档key少于zh-cn.json`),
+  //       deleteKeysCompareWithZhCN?.length
+  //     );
+  //     console.log(chalk.red(`===========================`));
+  //   } else {
+  //     console.log(chalk.green(`${file},更新完成`));
+  //   }
+  // });
 }
 
 function updateJSONFile(options: { file: string, source: string, target: string, onlyValue?: boolean }) {

@@ -59,8 +59,8 @@ function checkUpdate(file, source, target) {
     const sourceJSON = getJSONByFile(file, source);
     const targetJSON = getJSONByFile(file, target);
     // targetJSON 对比 sourceJSON, 有哪些key修改，哪些key新增，哪些key删除
-    const addKeys = Object.keys(targetJSON).filter((key) => !sourceJSON[key]);
-    const deleteKeys = Object.keys(sourceJSON).filter((key) => !targetJSON[key]);
+    const addKeys = Object.keys(sourceJSON).filter((key) => !targetJSON[key]);
+    const deleteKeys = Object.keys(targetJSON).filter((key) => !sourceJSON[key]);
     const updateKeys = Object.keys(sourceJSON).filter((key) => targetJSON[key] !== sourceJSON[key]);
     // print
     console.log(`${file},============================`);
@@ -68,16 +68,18 @@ function checkUpdate(file, source, target) {
     console.log(chalk.red("删除: "), deleteKeys === null || deleteKeys === void 0 ? void 0 : deleteKeys.length);
     console.log(chalk.yellow("修改: "), updateKeys === null || updateKeys === void 0 ? void 0 : updateKeys.length);
     const deleteKeysCompareWithZhCN = Object.keys(zhCN).filter((key) => !targetJSON[key]);
-    setTimeout(() => {
-        if (deleteKeysCompareWithZhCN.length > 0) {
-            console.log(chalk.red(`===========================`));
-            console.log(chalk.red(`${file},更新文档key少于zh-cn.json`), deleteKeysCompareWithZhCN === null || deleteKeysCompareWithZhCN === void 0 ? void 0 : deleteKeysCompareWithZhCN.length);
-            console.log(chalk.red(`===========================`));
-        }
-        else {
-            console.log(chalk.green(`${file},更新完成`));
-        }
-    });
+    // setTimeout(() => {
+    //   if (deleteKeysCompareWithZhCN.length > 0) {
+    //     console.log(chalk.red(`===========================`));
+    //     console.log(
+    //       chalk.red(`${file},更新文档key少于zh-cn.json`),
+    //       deleteKeysCompareWithZhCN?.length
+    //     );
+    //     console.log(chalk.red(`===========================`));
+    //   } else {
+    //     console.log(chalk.green(`${file},更新完成`));
+    //   }
+    // });
 }
 function updateJSONFile(options) {
     const { file, source, target, onlyValue = false } = options;
