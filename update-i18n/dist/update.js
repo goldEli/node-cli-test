@@ -92,7 +92,11 @@ function updateJSONFile(options) {
             return acc;
         }, {});
     }
-    writeToFile(path.join(target, file), newValue);
+    // remove target file
+    fs.rmSync(path.join(target, file), { recursive: true, force: true });
+    // copy target file to source and rename
+    fs.copyFileSync(path.join(source, file), path.join(target, file));
+    // writeToFile(path.join(target, file), newValue);
 }
 function writeToFile(filePath, data) {
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
