@@ -66,6 +66,10 @@ function filterFilesWithJSON(files: string[]) {
   return files.filter((file) => file.endsWith(".json"));
 }
 
+function isChinese(str: string) {
+  return /[\u4E00-\u9FA5]/.test(str);
+}
+
 async function handleProject(projectName: string) {
 
   const outputDir = path.join(resultPath, projectName);
@@ -94,7 +98,8 @@ async function handleProject(projectName: string) {
     const result: Record<string, string> = {};
 
     for (const key in zhContent) {
-      if (!sourceContent[key]) {
+      const noTranslate = isChinese(sourceContent[key]) || !sourceContent[key]
+      if (!sourceContent[key] && enContent[key]) {
         result[key] = enContent[key] || "";
       }
     }

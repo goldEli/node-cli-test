@@ -29,5 +29,11 @@ export const projectList = [
         zh: "zhCN.json",
         en: "en.json",
     },
+    {
+        name: "activity-backend-language",
+        path: "/Users/eli/Documents/weex/activity-backend-language",
+        zh: "zh-cn.json",
+        en: "en-US.json",
+    },
 ];
 //# sourceMappingURL=config.js.map

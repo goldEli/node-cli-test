@@ -67,6 +67,9 @@ function getNameByPath(path) {
 function filterFilesWithJSON(files) {
     return files.filter((file) => file.endsWith(".json"));
 }
+function isChinese(str) {
+    return /[\u4E00-\u9FA5]/.test(str);
+}
 function handleProject(projectName) {
     return __awaiter(this, void 0, void 0, function* () {
         const outputDir = path.join(resultPath, projectName);
@@ -92,7 +95,8 @@ function handleProject(projectName) {
             const sourceContent = readJSONByPath(path.join(projectPath, file));
             const result = {};
             for (const key in zhContent) {
-                if (!sourceContent[key]) {
+                const noTranslate = isChinese(sourceContent[key]) || !sourceContent[key];
+                if (!sourceContent[key] && enContent[key]) {
                     result[key] = enContent[key] || "";
                 }
             }
